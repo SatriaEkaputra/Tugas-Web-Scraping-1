@@ -1,0 +1,35 @@
+Pertama, klik kanan di website yang akan discrap:
+
+(https://www.petsecure.com.au/pet-care/a-guide-to-worldwide-pet-ownership/),
+
+lalu klik Inspect(Q). Scroll ke bawah dan cari elemen website sampai ketemu div dan class kelompok table, yang dalam kasus ini adalah:
+
+<div class="table-holder clearfix">
+
+Selanjutnya, di dalam kelompok ini, cari table dan class dari tabel yang akan diekstrak, dalam kasus ini:
+
+<table class="cats">
+
+Lalu modifikasi kode contoh bagian Get Table Data from BeautifulSoup:
+
+Lama:
+
+# Get Div with Class table-2
+assurance = soup.find('div', {'class': 'table-2'})
+
+# Get the table and print out
+table = assurance.find('table')
+
+print(table.prettify())
+
+Baru:
+
+# Get Div with Class table-2
+assurance = soup.find('div', {'class': 'table-holder clearfix'})
+
+# Get the table and print out
+table = assurance.find('table', {'class': 'cats'})
+
+print(table.prettify())
+
+Terakhir, jalankan kode sesuai urutan.
